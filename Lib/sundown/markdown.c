@@ -1166,7 +1166,7 @@ is_hrule(uint8_t *data, size_t size)
 static size_t
 prefix_codefence(uint8_t *data, size_t size)
 {
-	size_t i = 0, n = 0;
+	size_t i = 0, n = 0,supJekll=1;
 	uint8_t c;
 
 	/* skipping initial spaces */
@@ -1175,19 +1175,49 @@ prefix_codefence(uint8_t *data, size_t size)
 	if (data[1] == ' ') { i++;
 	if (data[2] == ' ') { i++; } } }
 
-	/* looking at the hrule uint8_t */
-	if (i + 2 >= size || !(data[i] == '~' || data[i] == '`'))
-		return 0;
+    if(!supJekll)
+    {
+        /* looking at the hrule uint8_t */
+        if (i + 2 >= size || !(data[i] == '~' || data[i] == '`'))
+            return 0;
 
-	c = data[i];
+        c = data[i];
 
-	/* the whole line must be the uint8_t or whitespace */
-	while (i < size && data[i] == c) {
-		n++; i++;
-	}
+        /* the whole line must be the uint8_t or whitespace */
+        while (i < size && data[i] == c) {
+            n++; i++;
+        }
 
-	if (n < 3)
-		return 0;
+        if (n < 3)
+            return 0;
+    }
+    else
+    {
+        /* looking at the hrule uint8_t */
+        if (i + 2 >= size || !(data[i] == '~' || data[i] == '`' || (data[i] == '{' && data[i+1]== '%')))
+            return 0;
+        if(data[i] == '~' || data[i] == '`')
+        {
+            c = data[i];
+            
+            /* the whole line must be the uint8_t or whitespace */
+            while (i < size && data[i] == c) {
+                n++; i++;
+            }
+            
+            if (n < 3)
+                return 0;
+            
+        }
+        else
+        {
+            /* the whole line must be the uint8_t or whitespace */
+            while (i < size && !(data[i] == '}' && data[i-1] == '%')) {
+                i++;
+            }
+            i++;
+        }
+    }
 
 	return i;
 }
@@ -1456,7 +1486,9 @@ parse_paragraph(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t 
 
 		if (is_atxheader(rndr, data + i, size - i) ||
 			is_hrule(data + i, size - i) ||
-			prefix_quote(data + i, size - i)) {
+			prefix_quote(data + i, size - i) ||
+            prefix_codefence(data + i, size - i)
+            ) {
 			end = i;
 			break;
 		}

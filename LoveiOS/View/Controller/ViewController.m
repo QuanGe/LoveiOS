@@ -1,4 +1,4 @@
-//
+  //
 //  ViewController.m
 //  LoveiOS
 //
@@ -29,7 +29,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     NSError* error;
-    //NSString *filePath = [[NSBundle mainBundle] pathForResource:@"README" ofType:@"markdown"];
+    //NSString *filePath = [[NSBundle mainBundle] pathForResource:@"2014-06-06-deep-into-reactivecocoa2" ofType:@"md"];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"README" ofType:@"markdown"];
     NSString* inputText = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
     struct buf *ob;
