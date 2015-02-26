@@ -1128,6 +1128,7 @@ is_empty(uint8_t *data, size_t size)
 	return i + 1;
 }
 
+/*判断是否是一条水平分割线 参考markdown维基百科的 水平分割线*/
 /* is_hrule • returns whether a line is a horizontal rule */
 static int
 is_hrule(uint8_t *data, size_t size)
@@ -1159,6 +1160,7 @@ is_hrule(uint8_t *data, size_t size)
 	return n >= 3;
 }
 
+/* 在这判断是否是～或者｀ 为开头的代码块*/
 /* check if a line begins with a code fence; return the
  * width of the code fence */
 static size_t
@@ -1190,6 +1192,7 @@ prefix_codefence(uint8_t *data, size_t size)
 	return i;
 }
 
+/*判断是否是php对markdown的fence code扩展，如果是返回代码块的大小 */
 /* check if a line is a code fence; return its size if it is */
 static size_t
 is_codefence(uint8_t *data, size_t size, struct buf *syntax)
@@ -1247,6 +1250,7 @@ is_codefence(uint8_t *data, size_t size, struct buf *syntax)
 	return i + 1;
 }
 
+/* 判断此行是否是以＃开头的标题 */
 /* is_atxheader • returns whether the line is a hash-prefixed header */
 static int
 is_atxheader(struct sd_markdown *rndr, uint8_t *data, size_t size)
@@ -1267,6 +1271,7 @@ is_atxheader(struct sd_markdown *rndr, uint8_t *data, size_t size)
 	return 1;
 }
 
+/*判断是否是mardown维基百科中 标题第二种写法中的 一级标题 或 二级标题*/
 /* is_headerline • returns whether the line is a setext-style hdr underline */
 static int
 is_headerline(uint8_t *data, size_t size)
@@ -1302,6 +1307,7 @@ is_next_headerline(uint8_t *data, size_t size)
 	return is_headerline(data + i, size - i);
 }
 
+/*返回是否是 引用 */
 /* prefix_quote • returns blockquote prefix length */
 static size_t
 prefix_quote(uint8_t *data, size_t size)
@@ -1321,6 +1327,7 @@ prefix_quote(uint8_t *data, size_t size)
 	return 0;
 }
 
+/*判断是否是以四个空格开头的代码块*/
 /* prefix_code • returns prefix length for block code*/
 static size_t
 prefix_code(uint8_t *data, size_t size)
@@ -1331,6 +1338,7 @@ prefix_code(uint8_t *data, size_t size)
 	return 0;
 }
 
+/*  有序的列表则是使用一般的数字接着一个英文句点作为项目标记*/
 /* prefix_oli • returns ordered list item prefix */
 static size_t
 prefix_oli(uint8_t *data, size_t size)
@@ -1356,6 +1364,7 @@ prefix_oli(uint8_t *data, size_t size)
 	return i + 2;
 }
 
+/*markdown 无序列表 无序列表使用星号、加号和减号来做为列表的项目标记*/
 /* prefix_uli • returns ordered list item prefix */
 static size_t
 prefix_uli(uint8_t *data, size_t size)
@@ -1537,6 +1546,7 @@ parse_paragraph(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t 
 	return end;
 }
 
+/*解析php对markdown的Fenced Code Blocks扩展 参考https://michelf.ca/projects/php-markdown/extra/*/
 /* parse_fencedcode • handles parsing of a block-level code fragment */
 static size_t
 parse_fencedcode(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t size)
@@ -1582,6 +1592,7 @@ parse_fencedcode(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t
 	return beg;
 }
 
+/*解析以四个空格开头的代码块*/
 static size_t
 parse_blockcode(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t size)
 {
@@ -1784,6 +1795,7 @@ parse_list(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t size,
 	return i;
 }
 
+/*解析以＃开头的标题，解析出是几级标题*/
 /* parse_atxheader • parsing of atx-style headers */
 static size_t
 parse_atxheader(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t size)
@@ -2198,17 +2210,21 @@ parse_block(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t size
 	while (beg < size) {
 		txt_data = data + beg;
 		end = size - beg;
-
+        
+        /*判断是否是以＃开头的标题*/
 		if (is_atxheader(rndr, txt_data, end))
 			beg += parse_atxheader(ob, rndr, txt_data, end);
-
+        
+        /*判断是否html代码*/
 		else if (data[beg] == '<' && rndr->cb.blockhtml &&
 				(i = parse_htmlblock(ob, rndr, txt_data, end, 1)) != 0)
 			beg += i;
-
+        
+        /*判断是否为空*/
 		else if ((i = is_empty(txt_data, end)) != 0)
 			beg += i;
-
+        
+        /*判断是否为下划线*/
 		else if (is_hrule(txt_data, end)) {
 			if (rndr->cb.hrule)
 				rndr->cb.hrule(ob, rndr->opaque);
@@ -2219,26 +2235,33 @@ parse_block(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t size
 			beg++;
 		}
 
+        /*判断是否为php对markdwon的扩展fenced code，即上下～线 参考https://michelf.ca/projects/php-markdown/extra/*/
 		else if ((rndr->ext_flags & MKDEXT_FENCED_CODE) != 0 &&
 			(i = parse_fencedcode(ob, rndr, txt_data, end)) != 0)
 			beg += i;
 
+        /*判断是否为table表格，也是php对markdwon的扩展 参考https://michelf.ca/projects/php-markdown/extra/*/
 		else if ((rndr->ext_flags & MKDEXT_TABLES) != 0 &&
 			(i = parse_table(ob, rndr, txt_data, end)) != 0)
 			beg += i;
 
+        /*判断是否为引用*/
 		else if (prefix_quote(txt_data, end))
 			beg += parse_blockquote(ob, rndr, txt_data, end);
 
+        /*判断是否为四个空格开头的代码*/
 		else if (prefix_code(txt_data, end))
 			beg += parse_blockcode(ob, rndr, txt_data, end);
-
+        
+        /*判断是否为无序列表*/
 		else if (prefix_uli(txt_data, end))
 			beg += parse_list(ob, rndr, txt_data, end, 0);
 
+        /*判断是否为有序列表*/
 		else if (prefix_oli(txt_data, end))
 			beg += parse_list(ob, rndr, txt_data, end, MKD_LIST_ORDERED);
 
+        /*解析段落里面的标题、引用、水平分割线*/
 		else
 			beg += parse_paragraph(ob, rndr, txt_data, end);
 	}

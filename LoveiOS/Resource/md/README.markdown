@@ -11,6 +11,20 @@ In short, this allows you to apply styling to Markdown without having to use UIW
 
 This project is based-upon / modifies a Cocoa fork of [peg markdown](https://github.com/humblehacker/peg-markdown/). 
 
+~~~~~~~~~~~~~~~~~~~~
+a one-line code block
+int i = 0;
+~~~~~~~~~~~~~~~~~~~~
+
+This is a paragraph introducing:
+
+看看这个可以么
+
+```
+int i = 0;
+i++;
+```
+
 ### Usage:
 
     // start with a raw markdown string
