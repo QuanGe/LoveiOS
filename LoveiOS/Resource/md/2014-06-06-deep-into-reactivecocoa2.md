@@ -16,7 +16,7 @@ category: iOS
 
 以下面这个Cell为例
 
-![](http://127.0.0.1:8080/image/rac-demo.png)
+![](http://192.168.5.24:8080/image/rac-demo.png)
 
 正常的写法可能是这样，很直观。
 
@@ -52,7 +52,7 @@ category: iOS
 
 Signal是RAC的核心，为了帮助理解，画了这张简化图
 
-![](http://127.0.0.1:8080/image/rac-signal.png)
+![](http://192.168.5.24:8080/image/rac-signal.png)
 
 这里的数据源和sendXXX，可以理解为函数的参数和返回值。当Signal处理完数据后，可以向下一个Signal或Subscriber传送数据。可以看到上半部分的两个Signal是冷的(cold)，相当于实现了某个函数，但该函数没有被调用。同时也说明了Signal可以被组合使用，比如`RACSignal *signalB = [signalA map:^id(id x){return x}]`，或`RACSignal *signalB = [signalA take:1]`等等。
 
@@ -328,7 +328,7 @@ ViewModel主要做的事情是作为View的数据源，所以通常会包含网�
 
 以下面这个需求为例，要求大图滑动结束时，底部的缩略图滚动到对应的位置，并高亮该缩略图；同时底部的缩略图被选中时，大图也要变成该缩略图的大图。
 
-![](http://127.0.0.1:8080/image/rac-mvvm.png)
+![](http://192.168.5.24:8080/image/rac-mvvm.png)
 
 我的思路是横向滚动的大图是一个collectionView，该collectionView是当前页面VC的一个property。底部可以滑动的缩略图是一个childVC的collectionView，这两个collectionView共用一套VM，并且各自RACObserve感兴趣的property。
 
@@ -546,7 +546,7 @@ RAC我自己感觉遇到的几个难点是: 1) 理解RAC的理念。 2) 熟悉�
 
 #### 调试
 
-![](http://127.0.0.1:8080/image/rac-debug.png)
+![](http://192.168.5.24:8080/image/rac-debug.png)
 
 刚开始写RAC时，往往会遇到这种情况，满屏的调用栈信息都是RAC的，要找出真正出现问题的地方不容易。曾经有一次在使用`[RACSignal combineLatest: reduce:^id{}]`时，忘了在Block里返回value，而Xcode也没有提示warning，然后就是莫名其妙地挂起了，跳到了汇编上，也没有调用栈信息，这时就只能通过最古老的注释代码的方式来找到问题的根源。
 
