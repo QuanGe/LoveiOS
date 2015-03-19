@@ -1,6 +1,7 @@
 platform :ios, '7.0'
 pod 'MBProgressHUD'
-
+pod 'SVPullToRefresh', git: 'https://github.com/QuanGe/SVPullToRefresh'
+pod 'DTCoreText', git: 'https://github.com/QuanGe/DTCoreText'
 pod 'ReactiveViewModel'
 pod 'AFNetworking'
 pod 'UALogger'

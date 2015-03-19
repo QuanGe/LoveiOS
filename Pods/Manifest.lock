@@ -20,34 +20,57 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - DTCoreText (1.6.15):
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTFoundation/Core (1.7.5)
+  - DTFoundation/DTAnimatedGIF (1.7.5)
+  - DTFoundation/DTHTMLParser (1.7.5):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.5):
+    - DTFoundation/Core
   - Mantle (1.5.4):
     - Mantle/extobjc
   - Mantle/extobjc (1.5.4)
   - MBProgressHUD (0.9)
-  - ReactiveCocoa (2.4.4):
+  - ReactiveCocoa (2.4.7):
     - ReactiveCocoa/UI
-  - ReactiveCocoa/Core (2.4.4):
+  - ReactiveCocoa/Core (2.4.7):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.4.4)
-  - ReactiveCocoa/UI (2.4.4):
+  - ReactiveCocoa/no-arc (2.4.7)
+  - ReactiveCocoa/UI (2.4.7):
     - ReactiveCocoa/Core
   - ReactiveViewModel (0.3):
     - ReactiveCocoa (~> 2.4)
+  - SVPullToRefresh (0.4.1)
   - UALogger (0.3)
 
 DEPENDENCIES:
   - AFNetworking
+  - DTCoreText (from `https://github.com/QuanGe/DTCoreText`)
   - Mantle (~> 1.5)
   - MBProgressHUD
   - ReactiveViewModel
+  - SVPullToRefresh (from `https://github.com/QuanGe/SVPullToRefresh`)
   - UALogger
+
+EXTERNAL SOURCES:
+  DTCoreText:
+    :git: https://github.com/QuanGe/DTCoreText
+  SVPullToRefresh:
+    :git: https://github.com/QuanGe/SVPullToRefresh
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  DTCoreText: 48ae1c18f00a43e001765ae774875a0a3df24f03
+  DTFoundation: bea4e07459f0f88a5aa3b8258fab1576bbe2e58c
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
-  ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
+  ReactiveCocoa: 313fc53cc9aeb2bbbc3f5f13c7eac16478d9af8f
   ReactiveViewModel: 512224f801ea0a603fd394eed0f38bc662b64b9a
+  SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
   UALogger: 6e4cfa6dff135f8e1ae0c8f6c60a43328c26b402
 
 COCOAPODS: 0.34.2
