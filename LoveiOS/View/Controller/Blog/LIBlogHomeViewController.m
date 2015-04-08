@@ -1,23 +1,26 @@
 //
-//  LeftMenumViewController.m
+//  BlogHomeViewController.m
 //  LoveiOS
 //
 //  Created by zhangruquan on 15/3/9.
 //  Copyright (c) 2015年 com.quange. All rights reserved.
 //
 
-#import "LeftMenumViewController.h"
-
-@interface LeftMenumViewController ()
+#import "LIBlogHomeViewController.h"
+#import "LIAPIManager.h"
+@interface LIBlogHomeViewController ()
 
 @end
 
-@implementation LeftMenumViewController
+@implementation LIBlogHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

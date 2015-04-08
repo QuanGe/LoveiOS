@@ -34,7 +34,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="m_pContentText" destination="Skg-tD-paG" id="PTv-XL-MGx"/>
+                        <outlet property="contentText" destination="Skg-tD-paG" id="PTv-XL-MGx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -43,7 +43,7 @@
         <!--框架VC-->
         <scene sceneID="5Tk-s0-ZiW">
             <objects>
-                <viewController id="AQ3-zC-8ol" userLabel="框架VC" customClass="AllInOneViewController" sceneMemberID="viewController">
+                <viewController id="AQ3-zC-8ol" userLabel="框架VC" customClass="LIAllInOneViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uMf-4X-mTr"/>
                         <viewControllerLayoutGuide type="bottom" id="9C8-RQ-5mb"/>
@@ -109,14 +109,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Z9T-ne-2WS"/>
                     <connections>
-                        <outlet property="m_pBackToMainPanGesture" destination="VOn-08-s6Z" id="d3w-5A-ckw"/>
-                        <outlet property="m_pBackToMainTapGesture" destination="5Je-ox-AVn" id="sxf-04-Z4h"/>
-                        <outlet property="m_pContentBoxLeft" destination="KUG-5D-M3G" id="QSX-JY-YdR"/>
-                        <outlet property="m_pContentBoxView" destination="oqc-9g-9NJ" id="iYA-8f-Twn"/>
-                        <outlet property="m_pContentPanGesture" destination="XkI-8k-UhO" id="uPa-NP-lGn"/>
-                        <outlet property="m_pContentView" destination="gJ2-zG-7xr" id="ZCH-4S-B8O"/>
-                        <outlet property="m_pGestureView" destination="8wG-6u-8PL" id="WRO-zn-grQ"/>
-                        <outlet property="m_pLeftMenumContainerView" destination="luz-3F-Cke" id="X04-7O-sF7"/>
+                        <outlet property="backToMainPanGesture" destination="VOn-08-s6Z" id="d3w-5A-ckw"/>
+                        <outlet property="backToMainTapGesture" destination="5Je-ox-AVn" id="sxf-04-Z4h"/>
+                        <outlet property="contentBoxLeft" destination="KUG-5D-M3G" id="QSX-JY-YdR"/>
+                        <outlet property="contentBoxView" destination="oqc-9g-9NJ" id="iYA-8f-Twn"/>
+                        <outlet property="contentPanGesture" destination="XkI-8k-UhO" id="uPa-NP-lGn"/>
+                        <outlet property="contentView" destination="gJ2-zG-7xr" id="ZCH-4S-B8O"/>
+                        <outlet property="gestureView" destination="8wG-6u-8PL" id="WRO-zn-grQ"/>
+                        <outlet property="leftMenumContainerView" destination="luz-3F-Cke" id="X04-7O-sF7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGK-HA-DrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -147,7 +147,7 @@
         <!--左侧导航-->
         <scene sceneID="jPG-eo-Z23">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="86I-MF-n35" userLabel="左侧导航" customClass="LeftMenumViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="86I-MF-n35" userLabel="左侧导航" customClass="LILeftMenumViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hrg-Ye-D7x"/>
                         <viewControllerLayoutGuide type="bottom" id="PUZ-iC-T66"/>
@@ -156,7 +156,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="205" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="导航栏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dO-gI-AQ4">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="导航栏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dO-gI-AQ4">
                                 <rect key="frame" x="78" y="290" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -178,7 +178,7 @@
         <!--博客首页-->
         <scene sceneID="Le6-cq-KJR">
             <objects>
-                <viewController storyboardIdentifier="BlogHomeViewController" automaticallyAdjustsScrollViewInsets="NO" id="YFS-XP-6nX" userLabel="博客首页" customClass="BlogHomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LIBlogHomeViewController" automaticallyAdjustsScrollViewInsets="NO" id="YFS-XP-6nX" userLabel="博客首页" customClass="LIBlogHomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VSW-xK-FLW"/>
                         <viewControllerLayoutGuide type="bottom" id="Zrl-ys-B49"/>

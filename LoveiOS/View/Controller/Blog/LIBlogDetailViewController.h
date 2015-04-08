@@ -1,5 +1,5 @@
 //
-//  LeftMenumViewController.h
+//  BlogDetailViewController.h
 //  LoveiOS
 //
 //  Created by zhangruquan on 15/3/9.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LeftMenumViewController : UIViewController
+@interface LIBlogDetailViewController : UIViewController
 
 @end

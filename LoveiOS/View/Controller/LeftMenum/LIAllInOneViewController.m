@@ -6,23 +6,23 @@
 //  Copyright (c) 2015年 com.quange. All rights reserved.
 //
 
-#import "AllInOneViewController.h"
-#import "BlogHomeViewController.h"
+#import "LIAllInOneViewController.h"
+#import "LIBlogHomeViewController.h"
 
-#define LeftWidth 205
-#define RightWidth (CGRectGetWidth([UIApplication sharedApplication].keyWindow.bounds) - LeftWidth)
-@interface AllInOneViewController ()
+#define kLeftWidth 205
+#define kRightWidth ([UIScreen mainScreen].bounds.size.width - kLeftWidth)
+@interface LIAllInOneViewController ()
 
 @end
 
-@implementation AllInOneViewController
+@implementation LIAllInOneViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
     @weakify(self);
-    [self.m_pContentPanGesture.rac_gestureSignal subscribeNext:^(UIPanGestureRecognizer * recognizer) {
+    [self.contentPanGesture.rac_gestureSignal subscribeNext:^(UIPanGestureRecognizer * recognizer) {
         @strongify(self);
         CGPoint point = [recognizer translationInView:self.view];
         if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -38,14 +38,14 @@
         }
         [self openWithPoint:point];
     }];
-    [self.m_pBackToMainPanGesture.rac_gestureSignal subscribeNext:^(UIPanGestureRecognizer * recognizer) {
+    [self.backToMainPanGesture.rac_gestureSignal subscribeNext:^(UIPanGestureRecognizer * recognizer) {
         @strongify(self);
         CGPoint point = [recognizer translationInView:self.view];
         if (recognizer.state == UIGestureRecognizerStateEnded) {
             // 当rootView的中心点和self.view的中心点x差值很大的时候应该打开sidebar，既判断向内拉动sidebar才会关闭sidebar
-            float changeX = abs(self.m_pContentBoxView.center.x - self.view.center.x);
+            float changeX = abs(self.contentBoxView.center.x - self.view.center.x);
             
-            if (changeX >= LeftWidth) {
+            if (changeX >= kLeftWidth) {
                 [self openSideBarView];
             } else {
                 [self closeSideBarView];
@@ -53,29 +53,29 @@
             return;
         }
         CGPoint offsetPoint = CGPointZero;
-        offsetPoint.x = point.x+(self.view.frame.size.width-RightWidth);
+        offsetPoint.x = point.x+(self.view.frame.size.width-kRightWidth);
         [self openWithPoint:offsetPoint];
     }];
-    [self.m_pBackToMainTapGesture.rac_gestureSignal subscribeNext:^(UITapGestureRecognizer * recognizer) {
+    [self.backToMainTapGesture.rac_gestureSignal subscribeNext:^(UITapGestureRecognizer * recognizer) {
         @strongify(self);
         [self closeSideBarView];
     }];
     
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    BlogHomeViewController *listController = (BlogHomeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"BlogHomeViewController"];
-    _m_pContentViewController = listController;
-    listController.view.frame = self.m_pContentView.frame;
-    [self.m_pContentView addSubview:listController.view];
+    LIBlogHomeViewController *listController = (LIBlogHomeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LIBlogHomeViewController"];
+    _contentViewController = listController;
+    listController.view.frame = self.contentView.frame;
+    [self.contentView addSubview:listController.view];
     [self addChildViewController:listController];
     
     
-    [[self.m_pContentView layer] setShadowOffset:CGSizeMake(1, 1)];
-    [[self.m_pContentView layer] setShadowRadius:5];
-    [[self.m_pContentView layer] setShadowOpacity:1];
-    [[self.m_pContentView layer] setShadowColor:[UIColor blackColor].CGColor];
+    [[self.contentView layer] setShadowOffset:CGSizeMake(1, 1)];
+    [[self.contentView layer] setShadowRadius:5];
+    [[self.contentView layer] setShadowOpacity:1];
+    [[self.contentView layer] setShadowColor:[UIColor blackColor].CGColor];
     
-    self.m_pContentBoxView.frame = self.view.frame;
-    self.m_pGestureView.hidden = YES;
+    self.contentBoxView.frame = self.view.frame;
+    self.gestureView.hidden = YES;
     NSString* fo =  [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstOpenLeft"];
     if(fo== nil)
     {
@@ -104,42 +104,42 @@
 
 - (void)openWithPoint:(CGPoint)point
 {
-    if (point.x < 0 || point.x>LeftWidth) {
+    if (point.x < 0 || point.x>kLeftWidth) {
         return;
     }
-    self.m_pContentBoxLeft.constant= point.x;
+    self.contentBoxLeft.constant= point.x;
     
 }
 - (void)closeSideBarView {
     [UIView animateWithDuration:0.25 animations:^{
         //self.m_pContentBoxView.transform = CGAffineTransformIdentity;
-        self.m_pContentBoxLeft.constant= 0;
+        self.contentBoxLeft.constant= 0;
         [self.view layoutIfNeeded];
         
     } completion:^(BOOL finished) {
-        self.m_pGestureView.hidden = YES;
+        self.gestureView.hidden = YES;
     }];
 }
 
 - (void)openSideBarView {
     
     [UIView animateWithDuration:0.25 animations:^{
-        CGPoint openPoint = CGPointMake((self.view.frame.size.width-RightWidth), 0);
+        CGPoint openPoint = CGPointMake((self.view.frame.size.width-kRightWidth), 0);
         [self openWithPoint:openPoint];
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
-        self.m_pGestureView.hidden = NO;
+        self.gestureView.hidden = NO;
     }];
 }
 #pragma mark - 切换vc
-- (void)setM_pFristLevelViewController:(UIViewController *)flvc {
-    if (_m_pContentViewController != flvc) {
+- (void)setContentViewController:(UIViewController *)flvc {
+    if (_contentViewController != flvc) {
         //flvc.view.autoresizingMask = _m_pFristLevelViewController.view.autoresizingMask;
-        flvc.view.frame = self.m_pContentView.frame;
-        [self.m_pContentViewController removeFromParentViewController];
-        [self.m_pContentViewController.view removeFromSuperview];
-        _m_pContentViewController = flvc;
-        [self.m_pContentView addSubview:flvc.view];
+        flvc.view.frame = self.contentView.frame;
+        [self.contentViewController removeFromParentViewController];
+        [self.contentViewController.view removeFromSuperview];
+        _contentViewController = flvc;
+        [self.contentView addSubview:flvc.view];
         [self addChildViewController:flvc];
         
     }

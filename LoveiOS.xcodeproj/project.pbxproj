@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		40883AA80F39E5583BF9D4A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 452DFFC0D17AF9697ED13708 /* libPods.a */; };
-		C32ED5381AADEE190035C125 /* AllInOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32ED5371AADEE190035C125 /* AllInOneViewController.m */; };
-		C32ED53B1AADEE2E0035C125 /* LeftMenumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32ED53A1AADEE2E0035C125 /* LeftMenumViewController.m */; };
-		C32ED53F1AADEEBA0035C125 /* BlogHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32ED53E1AADEEBA0035C125 /* BlogHomeViewController.m */; };
-		C32ED5421AADEECD0035C125 /* BlogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32ED5411AADEECD0035C125 /* BlogDetailViewController.m */; };
+		C32ED5381AADEE190035C125 /* LIAllInOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32ED5371AADEE190035C125 /* LIAllInOneViewController.m */; };
+		C32ED53B1AADEE2E0035C125 /* LILeftMenumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32ED53A1AADEE2E0035C125 /* LILeftMenumViewController.m */; };
+		C32ED53F1AADEEBA0035C125 /* LIBlogHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32ED53E1AADEEBA0035C125 /* LIBlogHomeViewController.m */; };
+		C32ED5421AADEECD0035C125 /* LIBlogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32ED5411AADEECD0035C125 /* LIBlogDetailViewController.m */; };
 		C392B6751AB5DF9300FB2DEE /* NSData+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = C392B64E1AB5DF9300FB2DEE /* NSData+Addition.m */; };
 		C392B6761AB5DF9300FB2DEE /* NSDate+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = C392B6501AB5DF9300FB2DEE /* NSDate+Addition.m */; };
 		C392B6771AB5DF9300FB2DEE /* NSFileManager+ Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = C392B6511AB5DF9300FB2DEE /* NSFileManager+ Addition.m */; };
@@ -32,7 +32,7 @@
 		C392B6861AB5DF9300FB2DEE /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C392B6701AB5DF9300FB2DEE /* UIView+Frame.m */; };
 		C392B6871AB5DF9300FB2DEE /* UIView+Layer.m in Sources */ = {isa = PBXBuildFile; fileRef = C392B6721AB5DF9300FB2DEE /* UIView+Layer.m */; };
 		C392B6881AB5DF9300FB2DEE /* UIView+SuperView.m in Sources */ = {isa = PBXBuildFile; fileRef = C392B6741AB5DF9300FB2DEE /* UIView+SuperView.m */; };
-		C39F08901A9B357400DC7F7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F08871A9B357400DC7F7D /* AppDelegate.m */; };
+		C39F08901A9B357400DC7F7D /* LIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F08871A9B357400DC7F7D /* LIAppDelegate.m */; };
 		C39F08911A9B357400DC7F7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F088C1A9B357400DC7F7D /* ViewController.m */; };
 		C39F08931A9B35EC00DC7F7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39F08921A9B35EC00DC7F7D /* Main.storyboard */; };
 		C39F08961A9B361300DC7F7D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C39F08941A9B361300DC7F7D /* Info.plist */; };
@@ -50,6 +50,10 @@
 		C39F08D21A9B380200DC7F7D /* README.markdown in Sources */ = {isa = PBXBuildFile; fileRef = C39F08CF1A9B380200DC7F7D /* README.markdown */; };
 		C39F08D31A9B3AE000DC7F7D /* 2014-06-06-deep-into-reactivecocoa2.md in Resources */ = {isa = PBXBuildFile; fileRef = C39F08CE1A9B380200DC7F7D /* 2014-06-06-deep-into-reactivecocoa2.md */; };
 		C39F08D41A9B3AE000DC7F7D /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = C39F08CF1A9B380200DC7F7D /* README.markdown */; };
+		C3A47A5E1AD3C304001FC054 /* UIViewController+LogDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A47A5D1AD3C304001FC054 /* UIViewController+LogDealloc.m */; };
+		C3A47A631AD3DD6E001FC054 /* LIBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A47A621AD3DD6E001FC054 /* LIBaseModel.m */; };
+		C3A47A661AD3DDED001FC054 /* LIBlogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A47A651AD3DDED001FC054 /* LIBlogModel.m */; };
+		C3A47A691AD3E104001FC054 /* LIAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A47A681AD3E104001FC054 /* LIAPIManager.m */; };
 		C3A7BBFE1A8D9851004DA891 /* LoveiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A7BBFD1A8D9851004DA891 /* LoveiOSTests.m */; };
 /* End PBXBuildFile section */
 
@@ -67,14 +71,14 @@
 		148B571BB147519C70DFF596 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3CBEDBC1D4EAA5039558B881 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		452DFFC0D17AF9697ED13708 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C32ED5361AADEE190035C125 /* AllInOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllInOneViewController.h; sourceTree = "<group>"; };
-		C32ED5371AADEE190035C125 /* AllInOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllInOneViewController.m; sourceTree = "<group>"; };
-		C32ED5391AADEE2E0035C125 /* LeftMenumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenumViewController.h; sourceTree = "<group>"; };
-		C32ED53A1AADEE2E0035C125 /* LeftMenumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenumViewController.m; sourceTree = "<group>"; };
-		C32ED53D1AADEEBA0035C125 /* BlogHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogHomeViewController.h; sourceTree = "<group>"; };
-		C32ED53E1AADEEBA0035C125 /* BlogHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogHomeViewController.m; sourceTree = "<group>"; };
-		C32ED5401AADEECD0035C125 /* BlogDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogDetailViewController.h; sourceTree = "<group>"; };
-		C32ED5411AADEECD0035C125 /* BlogDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogDetailViewController.m; sourceTree = "<group>"; };
+		C32ED5361AADEE190035C125 /* LIAllInOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIAllInOneViewController.h; sourceTree = "<group>"; };
+		C32ED5371AADEE190035C125 /* LIAllInOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIAllInOneViewController.m; sourceTree = "<group>"; };
+		C32ED5391AADEE2E0035C125 /* LILeftMenumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LILeftMenumViewController.h; sourceTree = "<group>"; };
+		C32ED53A1AADEE2E0035C125 /* LILeftMenumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LILeftMenumViewController.m; sourceTree = "<group>"; };
+		C32ED53D1AADEEBA0035C125 /* LIBlogHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIBlogHomeViewController.h; sourceTree = "<group>"; };
+		C32ED53E1AADEEBA0035C125 /* LIBlogHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIBlogHomeViewController.m; sourceTree = "<group>"; };
+		C32ED5401AADEECD0035C125 /* LIBlogDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIBlogDetailViewController.h; sourceTree = "<group>"; };
+		C32ED5411AADEECD0035C125 /* LIBlogDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIBlogDetailViewController.m; sourceTree = "<group>"; };
 		C32ED5431AADF6070035C125 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C392B64C1AB5DF9300FB2DEE /* CategoryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryUtils.h; sourceTree = "<group>"; };
 		C392B64D1AB5DF9300FB2DEE /* NSData+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Addition.h"; sourceTree = "<group>"; };
@@ -119,8 +123,8 @@
 		C392B6741AB5DF9300FB2DEE /* UIView+SuperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SuperView.m"; sourceTree = "<group>"; };
 		C392B6891AB5E20500FB2DEE /* MacroDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefine.h; sourceTree = "<group>"; };
 		C392B68A1AB5E20500FB2DEE /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
-		C39F08861A9B357400DC7F7D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C39F08871A9B357400DC7F7D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C39F08861A9B357400DC7F7D /* LIAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIAppDelegate.h; sourceTree = "<group>"; };
+		C39F08871A9B357400DC7F7D /* LIAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIAppDelegate.m; sourceTree = "<group>"; };
 		C39F088B1A9B357400DC7F7D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C39F088C1A9B357400DC7F7D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C39F08921A9B35EC00DC7F7D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +148,14 @@
 		C39F08CC1A9B380200DC7F7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C39F08CE1A9B380200DC7F7D /* 2014-06-06-deep-into-reactivecocoa2.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "2014-06-06-deep-into-reactivecocoa2.md"; sourceTree = "<group>"; };
 		C39F08CF1A9B380200DC7F7D /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
+		C3A47A5C1AD3C304001FC054 /* UIViewController+LogDealloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LogDealloc.h"; sourceTree = "<group>"; };
+		C3A47A5D1AD3C304001FC054 /* UIViewController+LogDealloc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LogDealloc.m"; sourceTree = "<group>"; };
+		C3A47A611AD3DD6E001FC054 /* LIBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIBaseModel.h; sourceTree = "<group>"; };
+		C3A47A621AD3DD6E001FC054 /* LIBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIBaseModel.m; sourceTree = "<group>"; };
+		C3A47A641AD3DDED001FC054 /* LIBlogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIBlogModel.h; path = Blog/LIBlogModel.h; sourceTree = "<group>"; };
+		C3A47A651AD3DDED001FC054 /* LIBlogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIBlogModel.m; path = Blog/LIBlogModel.m; sourceTree = "<group>"; };
+		C3A47A671AD3E104001FC054 /* LIAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIAPIManager.h; sourceTree = "<group>"; };
+		C3A47A681AD3E104001FC054 /* LIAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIAPIManager.m; sourceTree = "<group>"; };
 		C3A7BBDE1A8D9851004DA891 /* LoveiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoveiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A7BBF71A8D9851004DA891 /* LoveiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoveiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A7BBFC1A8D9851004DA891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,10 +192,10 @@
 		C32ED5351AADED9C0035C125 /* LeftMenum */ = {
 			isa = PBXGroup;
 			children = (
-				C32ED5361AADEE190035C125 /* AllInOneViewController.h */,
-				C32ED5371AADEE190035C125 /* AllInOneViewController.m */,
-				C32ED5391AADEE2E0035C125 /* LeftMenumViewController.h */,
-				C32ED53A1AADEE2E0035C125 /* LeftMenumViewController.m */,
+				C32ED5361AADEE190035C125 /* LIAllInOneViewController.h */,
+				C32ED5371AADEE190035C125 /* LIAllInOneViewController.m */,
+				C32ED5391AADEE2E0035C125 /* LILeftMenumViewController.h */,
+				C32ED53A1AADEE2E0035C125 /* LILeftMenumViewController.m */,
 			);
 			path = LeftMenum;
 			sourceTree = "<group>";
@@ -191,10 +203,10 @@
 		C32ED53C1AADEE990035C125 /* Blog */ = {
 			isa = PBXGroup;
 			children = (
-				C32ED53D1AADEEBA0035C125 /* BlogHomeViewController.h */,
-				C32ED53E1AADEEBA0035C125 /* BlogHomeViewController.m */,
-				C32ED5401AADEECD0035C125 /* BlogDetailViewController.h */,
-				C32ED5411AADEECD0035C125 /* BlogDetailViewController.m */,
+				C32ED53D1AADEEBA0035C125 /* LIBlogHomeViewController.h */,
+				C32ED53E1AADEEBA0035C125 /* LIBlogHomeViewController.m */,
+				C32ED5401AADEECD0035C125 /* LIBlogDetailViewController.h */,
+				C32ED5411AADEECD0035C125 /* LIBlogDetailViewController.m */,
 			);
 			path = Blog;
 			sourceTree = "<group>";
@@ -243,6 +255,8 @@
 				C392B6721AB5DF9300FB2DEE /* UIView+Layer.m */,
 				C392B6731AB5DF9300FB2DEE /* UIView+SuperView.h */,
 				C392B6741AB5DF9300FB2DEE /* UIView+SuperView.m */,
+				C3A47A5C1AD3C304001FC054 /* UIViewController+LogDealloc.h */,
+				C3A47A5D1AD3C304001FC054 /* UIViewController+LogDealloc.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -254,8 +268,8 @@
 				C392B68A1AB5E20500FB2DEE /* AppConfig.h */,
 				C39F08941A9B361300DC7F7D /* Info.plist */,
 				C39F08951A9B361300DC7F7D /* main.m */,
-				C39F08861A9B357400DC7F7D /* AppDelegate.h */,
-				C39F08871A9B357400DC7F7D /* AppDelegate.m */,
+				C39F08861A9B357400DC7F7D /* LIAppDelegate.h */,
+				C39F08871A9B357400DC7F7D /* LIAppDelegate.m */,
 				C32ED5431AADF6070035C125 /* PrefixHeader.pch */,
 			);
 			path = Config;
@@ -264,6 +278,11 @@
 		C39F08881A9B357400DC7F7D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C3A47A601AD3DCFA001FC054 /* Blog */,
+				C3A47A611AD3DD6E001FC054 /* LIBaseModel.h */,
+				C3A47A621AD3DD6E001FC054 /* LIBaseModel.m */,
+				C3A47A671AD3E104001FC054 /* LIAPIManager.h */,
+				C3A47A681AD3E104001FC054 /* LIAPIManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +319,7 @@
 		C39F088E1A9B357400DC7F7D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C3A47A5F1AD3CBC8001FC054 /* LeftMenum */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,6 +386,22 @@
 				C39F08CF1A9B380200DC7F7D /* README.markdown */,
 			);
 			path = md;
+			sourceTree = "<group>";
+		};
+		C3A47A5F1AD3CBC8001FC054 /* LeftMenum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LeftMenum;
+			sourceTree = "<group>";
+		};
+		C3A47A601AD3DCFA001FC054 /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				C3A47A641AD3DDED001FC054 /* LIBlogModel.h */,
+				C3A47A651AD3DDED001FC054 /* LIBlogModel.m */,
+			);
+			name = Blog;
 			sourceTree = "<group>";
 		};
 		C3A7BBD51A8D9851004DA891 = {
@@ -565,7 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C32ED5381AADEE190035C125 /* AllInOneViewController.m in Sources */,
+				C32ED5381AADEE190035C125 /* LIAllInOneViewController.m in Sources */,
 				C392B67B1AB5DF9300FB2DEE /* UIAlertView+Addition.m in Sources */,
 				C39F08C81A9B36BF00DC7F7D /* html_smartypants.c in Sources */,
 				C392B6861AB5DF9300FB2DEE /* UIView+Frame.m in Sources */,
@@ -573,6 +609,7 @@
 				C39F08C41A9B36BF00DC7F7D /* buffer.c in Sources */,
 				C392B67E1AB5DF9300FB2DEE /* UIDevice+DeviceInfo.m in Sources */,
 				C392B6761AB5DF9300FB2DEE /* NSDate+Addition.m in Sources */,
+				C3A47A631AD3DD6E001FC054 /* LIBaseModel.m in Sources */,
 				C392B6831AB5DF9300FB2DEE /* UITextField+LimitLength.m in Sources */,
 				C392B6751AB5DF9300FB2DEE /* NSData+Addition.m in Sources */,
 				C392B6851AB5DF9300FB2DEE /* UIView+Animation.m in Sources */,
@@ -590,18 +627,21 @@
 				C392B6791AB5DF9300FB2DEE /* NSString+MD5Addition.m in Sources */,
 				C39F08911A9B357400DC7F7D /* ViewController.m in Sources */,
 				C392B6801AB5DF9300FB2DEE /* UIImage+Addition.m in Sources */,
-				C32ED53B1AADEE2E0035C125 /* LeftMenumViewController.m in Sources */,
+				C3A47A661AD3DDED001FC054 /* LIBlogModel.m in Sources */,
+				C32ED53B1AADEE2E0035C125 /* LILeftMenumViewController.m in Sources */,
 				C392B6881AB5DF9300FB2DEE /* UIView+SuperView.m in Sources */,
 				C39F08C31A9B36BF00DC7F7D /* autolink.c in Sources */,
-				C32ED5421AADEECD0035C125 /* BlogDetailViewController.m in Sources */,
+				C32ED5421AADEECD0035C125 /* LIBlogDetailViewController.m in Sources */,
+				C3A47A5E1AD3C304001FC054 /* UIViewController+LogDealloc.m in Sources */,
 				C392B6781AB5DF9300FB2DEE /* NSString+Addition.m in Sources */,
 				C39F08C61A9B36BF00DC7F7D /* houdini_html_e.c in Sources */,
 				C392B67A1AB5DF9300FB2DEE /* NSString+Regular.m in Sources */,
-				C39F08901A9B357400DC7F7D /* AppDelegate.m in Sources */,
+				C39F08901A9B357400DC7F7D /* LIAppDelegate.m in Sources */,
 				C392B6811AB5DF9300FB2DEE /* UIImageView+LBBlurredImage.m in Sources */,
 				C39F08C91A9B36BF00DC7F7D /* markdown.c in Sources */,
 				C392B6871AB5DF9300FB2DEE /* UIView+Layer.m in Sources */,
-				C32ED53F1AADEEBA0035C125 /* BlogHomeViewController.m in Sources */,
+				C32ED53F1AADEEBA0035C125 /* LIBlogHomeViewController.m in Sources */,
+				C3A47A691AD3E104001FC054 /* LIAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

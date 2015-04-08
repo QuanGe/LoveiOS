@@ -1,5 +1,5 @@
 
-#import "AppDelegate.h"
+#import "LIAppDelegate.h"
 
 /*--------------------------------开发中常用到的宏定义--------------------------------------*/
 
@@ -8,11 +8,13 @@
 
 
 //----------方法简写-------
-#define mAppDelegate        (AppDelegate *)[[UIApplication sharedApplication] delegate]
+#define mAppDelegate        (LIAppDelegate *)[[UIApplication sharedApplication] delegate]
 #define mWindow             [[[UIApplication sharedApplication] windows] lastObject]
 #define mKeyWindow          [[UIApplication sharedApplication] keyWindow]
 #define mUserDefaults       [NSUserDefaults standardUserDefaults]
 #define mNotificationCenter [NSNotificationCenter defaultCenter]
+#define mUrlString(path)    [[NSURL URLWithString:path relativeToURL:[NSURL URLWithString:@"http://loveios.sinaapp.com/"]] absoluteString]
+#define mEncodedUrlString(urlString) [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
 
 //加载图片
 #define mImageByName(name)        [UIImage imageNamed:name]
@@ -95,10 +97,5 @@ otherButtonTitles:nil]; \
 //iPhone Simulator
 #endif
 
-//获取appDelegate实例。
-UIKIT_STATIC_INLINE AppDelegate *appDelegate()
-{
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
-}
 
 

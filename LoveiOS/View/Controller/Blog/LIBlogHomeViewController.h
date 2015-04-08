@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BlogHomeViewController : UIViewController
+@interface LIBlogHomeViewController : UIViewController
 
 @end

@@ -1,18 +1,18 @@
 //
-//  BlogHomeViewController.m
+//  BlogDetailViewController.m
 //  LoveiOS
 //
 //  Created by zhangruquan on 15/3/9.
 //  Copyright (c) 2015年 com.quange. All rights reserved.
 //
 
-#import "BlogHomeViewController.h"
+#import "LIBlogDetailViewController.h"
 
-@interface BlogHomeViewController ()
+@interface LIBlogDetailViewController ()
 
 @end
 
-@implementation BlogHomeViewController
+@implementation LIBlogDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

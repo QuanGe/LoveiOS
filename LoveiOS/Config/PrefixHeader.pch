@@ -20,6 +20,9 @@
 #import "AFNetworking.h"
 #import "Mantle.h"
 #import "MBProgressHUD.h"
+#import "MacroDefine.h"
+#import "AppConfig.h"
+#import "CategoryUtils.h"
 #endif
 
 
