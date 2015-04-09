@@ -172,10 +172,10 @@ static char UIScrollViewPullToRefreshView;
     return !self.pullToRefreshView.hidden;
 }
 
--(void)showNoNataView:(NSString*)alerStr imageName:(NSString*)name
+-(void)showNoNataViewWithMessage:(NSString*)message imageName:(NSString*)name
 {
     
-    if(alerStr == nil || name == nil||self.pullType==0)
+    if(message == nil || name == nil||self.pullType==0)
         return;
     
     if(self.contentSize.height != 0)
@@ -203,7 +203,7 @@ static char UIScrollViewPullToRefreshView;
         
     }
     
-    ((UILabel*)[self viewWithTag:NoDataLabelTag]).text = alerStr;
+    ((UILabel*)[self viewWithTag:NoDataLabelTag]).text = message;
     UIImageView * i = (UIImageView*)[self viewWithTag:NoDataLogoTag];
     [i setImage:[UIImage imageNamed:name ]];
     [UIView animateWithDuration:0.2 animations:^{
@@ -216,7 +216,7 @@ static char UIScrollViewPullToRefreshView;
     
 }
 
--(void)setPullVisibleLogo:(NSString*)imageName
+-(void)configPullVisibleLogoWithName:(NSString*)imageName
 {
     
     if(self.pullType == SVPullDefault)
@@ -486,6 +486,9 @@ static char UIScrollViewPullToRefreshView;
     if([keyPath isEqualToString:@"contentOffset"])
         [self scrollViewDidScroll:[[change valueForKey:NSKeyValueChangeNewKey] CGPointValue]];
     else if([keyPath isEqualToString:@"contentSize"]) {
+        if([[change valueForKey:NSKeyValueChangeNewKey] CGPointValue].y >0)
+            [object viewWithTag:NodataViewTag].alpha=0.0;
+        
         [self layoutSubviews];
         
         CGFloat yOrigin;

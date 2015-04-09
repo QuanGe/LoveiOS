@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *contentPanGesture;
 @property (nonatomic, strong) UIViewController *contentViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentBoxLeft;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentBoxRight;
 
 
 - (void)openSideBarView;

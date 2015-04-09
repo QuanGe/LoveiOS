@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DTCoreText.h"
+@interface LIBlogDetailViewController : UIViewController<DTAttributedTextContentViewDelegate, DTLazyImageViewDelegate,UIActionSheetDelegate>
+@property (weak, nonatomic) IBOutlet DTAttributedTextView *dtAttributeText;
+@property (nonatomic) NSString* blogURLString;
 
-@interface LIBlogDetailViewController : UIViewController
+- (IBAction)back:(UIButton *)sender;
 
 @end

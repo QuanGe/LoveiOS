@@ -238,6 +238,44 @@ static NSCache *imageCache = nil;
 			_contentURL = nil;
 			[self _updateSizesFromImage:image];
 		}
+		else
+		{
+			NSString *ext = [[[contentURL lastPathComponent] pathExtension] lowercaseString];
+			
+			if (![ext isEqualToString:@"gif"] && !CGSizeEqualToSize(CGSizeZero, _placeHolderImageSize))
+			{
+				_originalSize = _placeHolderImageSize;
+				// initial display size matches original
+				if (CGSizeEqualToSize(CGSizeZero, _displaySize))
+				{
+					[self setDisplaySize:_originalSize withMaxDisplaySize:_maxImageSize];
+				}
+				else
+				{
+					// get the other dimension if one is missing
+					
+					if (!_displaySize.width && _displaySize.height)
+					{
+						CGSize newDisplaySize = _displaySize;
+						
+						CGFloat factor = _displaySize.height/_originalSize.height;
+						newDisplaySize.width = _originalSize.height * factor;
+						
+						[self setDisplaySize:newDisplaySize withMaxDisplaySize:_maxImageSize];
+					}
+					else if (_displaySize.width && !_displaySize.height)
+					{
+						CGSize newDisplaySize = _displaySize;
+						
+						CGFloat factor = _displaySize.width/_originalSize.width;
+						newDisplaySize.height = _originalSize.width * factor;
+						
+						[self setDisplaySize:newDisplaySize withMaxDisplaySize:_maxImageSize];
+					}
+				}
+			}
+		}
+
 	}
 	
 	// only remote images should have a URL

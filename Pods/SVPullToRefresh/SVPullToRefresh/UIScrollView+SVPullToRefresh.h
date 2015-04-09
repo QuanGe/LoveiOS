@@ -32,8 +32,8 @@ typedef NS_ENUM(NSUInteger, SVPullToRefreshPosition) {
 @property (nonatomic, assign) BOOL showsPullToRefresh;
 @property (nonatomic, assign) SVPullType pullType;//0:default 1:logo vivible
 
--(void)showNoNataView:(NSString*)alerStr imageName:(NSString*)name;
--(void)setPullVisibleLogo:(NSString*)imageName;
+-(void)showNoNataViewWithMessage:(NSString*)message imageName:(NSString*)name;
+-(void)configPullVisibleLogoWithName:(NSString*)imageName;
 @end
 
 

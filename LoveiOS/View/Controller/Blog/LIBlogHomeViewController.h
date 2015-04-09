@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LIBlogListViewModel.h"
 @interface LIBlogHomeViewController : UIViewController
-
+@property (nonatomic) LIAPIBlogType type;
 @end

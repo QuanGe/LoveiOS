@@ -8,6 +8,7 @@
 
 #import "LILeftMenumViewController.h"
 #import "LIAllInOneViewController.h"
+#import "LIBlogHomeViewController.h"
 static NSString *cellIdentifier = @"cell";
 #define kCellHeight 44
 
@@ -37,8 +38,12 @@ static NSString *cellIdentifier = @"cell";
     [table registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
     [self.view addSubview:table];
     
-    NSIndexPath *indexpath=[NSIndexPath indexPathForRow:0 inSection:0];
-    [table selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSIndexPath *indexpath=[NSIndexPath indexPathForRow:0 inSection:0];
+        [table selectRowAtIndexPath:indexpath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+        [self selectItemWithRow:indexpath.row];
+    });
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,7 +102,8 @@ static NSString *cellIdentifier = @"cell";
     } else {
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        UIViewController *listController = (UIViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LIBlogHomeViewController"];
+        LIBlogHomeViewController *listController = (LIBlogHomeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LIBlogHomeViewController"];
+        listController.type = row==3?0:row+1;
         ((LIAllInOneViewController*)self.parentViewController).contentViewController = listController;
         self.contentViewControllersDic[sonVC] = listController;
         [(LIAllInOneViewController*)self.parentViewController closeSideBarView];

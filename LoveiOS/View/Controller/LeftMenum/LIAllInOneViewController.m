@@ -61,12 +61,12 @@
         [self closeSideBarView];
     }];
     
-    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LIBlogHomeViewController *listController = (LIBlogHomeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LIBlogHomeViewController"];
-    _contentViewController = listController;
-    listController.view.frame = self.contentView.frame;
-    [self.contentView addSubview:listController.view];
-    [self addChildViewController:listController];
+//    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    LIBlogHomeViewController *listController = (LIBlogHomeViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LIBlogHomeViewController"];
+//    _contentViewController = listController;
+//    listController.view.frame = self.contentView.frame;
+//    [self.contentView addSubview:listController.view];
+//    [self addChildViewController:listController];
     
     
     [[self.contentView layer] setShadowOffset:CGSizeMake(1, 1)];
@@ -108,12 +108,14 @@
         return;
     }
     self.contentBoxLeft.constant= point.x;
+    self.contentBoxRight.constant = -point.x;
     
 }
 - (void)closeSideBarView {
     [UIView animateWithDuration:0.25 animations:^{
         //self.m_pContentBoxView.transform = CGAffineTransformIdentity;
         self.contentBoxLeft.constant= 0;
+        self.contentBoxRight.constant = 0;
         [self.view layoutIfNeeded];
         
     } completion:^(BOOL finished) {

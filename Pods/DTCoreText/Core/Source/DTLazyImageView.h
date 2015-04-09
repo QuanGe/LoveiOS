@@ -44,6 +44,11 @@ extern NSString * const DTLazyImageViewDidFinishDownloadNotification;
 @property (nonatomic, strong) NSURL *url;
 
 /**
+ The placeholder image name for remote image
+ */
+@property (nonatomic, strong) NSString *placeHolderImageName ;
+
+/**
  The URL Request that is to be used for downloading the image. If this is left `nil` the a new URL Request will be created
  */
 @property (nonatomic, strong) NSMutableURLRequest *urlRequest;

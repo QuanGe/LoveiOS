@@ -38,6 +38,7 @@ extern NSString * const NSAttachmentAttributeName;
 // custom options
 
 extern NSString * const DTMaxImageSize;
+extern NSString * const DTPlaceHolderImageSize;
 extern NSString * const DTDefaultFontFamily;
 extern NSString * const DTDefaultFontName;
 extern NSString * const DTDefaultFontSize;

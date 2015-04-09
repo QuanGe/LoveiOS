@@ -77,6 +77,7 @@ typedef NS_ENUM(NSUInteger, DTTextAttachmentVerticalAlignment)
 	CGSize _displaySize;  // the display dimensions of the attachment
 	CGSize _originalSize; // the original dimensions of the attachment
 	CGSize _maxImageSize; // the maximum dimensions to size to
+	CGSize _placeHolderImageSize; // the place holder image size
 	NSURL *_contentURL;
 	NSDictionary *_attributes; // attributes transferred from HTML element
 	DTTextAttachmentVerticalAlignment _verticalAlignment; // alignment in relation to the baseline
@@ -150,6 +151,11 @@ typedef NS_ENUM(NSUInteger, DTTextAttachmentVerticalAlignment)
  @param maxDisplaySize the maximum size that the content should be scaled to fit
  */
 - (void)setDisplaySize:(CGSize)displaySize withMaxDisplaySize:(CGSize)maxDisplaySize;
+
+/**
+ originalSize is seted  by PlaceHolderSize or not
+ */
+-(BOOL)originalSizeSetedByPlaceHolderSize;
 
 /**
  The URL representing the content

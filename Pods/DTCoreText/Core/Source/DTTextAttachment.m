@@ -73,6 +73,7 @@ static NSMutableDictionary *_classForTagNameLookup = nil;
 		_displaySize = [aDecoder decodeCGSizeForKey:@"displaySize"];
 		_originalSize = [aDecoder decodeCGSizeForKey:@"originalSize"];
 		_maxImageSize = [aDecoder decodeCGSizeForKey:@"maxImageSize"];
+		_placeHolderImageSize = [aDecoder decodeCGSizeForKey:@"placeHolderImageSize"];
 		_contentURL = [aDecoder decodeObjectForKey:@"contentURL"];
 		_attributes = [aDecoder decodeObjectForKey:@"attributes"];
 		_verticalAlignment = [aDecoder decodeIntegerForKey:@"verticalAlignment"];
@@ -84,6 +85,7 @@ static NSMutableDictionary *_classForTagNameLookup = nil;
 	[aCoder encodeCGSize:_displaySize forKey:@"displaySize"];
 	[aCoder encodeCGSize:_originalSize forKey:@"originalSize"];
 	[aCoder encodeCGSize:_maxImageSize forKey:@"maxImageSize"];
+	[aCoder encodeCGSize:_placeHolderImageSize forKey:@"placeHolderImageSize"];
 	[aCoder encodeObject:_contentURL forKey:@"contentURL"];
 	[aCoder encodeObject:_attributes forKey:@"attributes"];
 	[aCoder encodeInteger:_verticalAlignment forKey:@"verticalAlignment"];
@@ -110,6 +112,19 @@ static NSMutableDictionary *_classForTagNameLookup = nil;
 			_maxImageSize = [maxImageSizeValue sizeValue];
 #endif
 		}
+		
+		_placeHolderImageSize = CGSizeZero;
+		
+		NSValue *placeholderImageSize =[options objectForKey:DTPlaceHolderImageSize];
+		if (placeholderImageSize)
+		{
+#if TARGET_OS_IPHONE
+			_placeHolderImageSize = [placeholderImageSize CGSizeValue];
+#else
+			_placeHolderImageSize = [placeholderImageSize sizeValue];
+#endif
+		}
+		
 		
 		// set the display size from the original size, restricted to the max size
 		[self setDisplaySize:_originalSize withMaxDisplaySize:_maxImageSize];
@@ -205,7 +220,7 @@ static NSMutableDictionary *_classForTagNameLookup = nil;
 	{
 		_originalSize = originalSize;
 		
-		if (!_displaySize.width || !_displaySize.height)
+		if ((!_displaySize.width || !_displaySize.height)||CGSizeEqualToSize(_displaySize, _placeHolderImageSize))
 		{
 			[self setDisplaySize:_originalSize withMaxDisplaySize:_maxImageSize];
 		}
@@ -217,7 +232,7 @@ static NSMutableDictionary *_classForTagNameLookup = nil;
 	if (_originalSize.width && _originalSize.height)
 	{
 		// width and/or height missing
-		if (displaySize.width==0 && displaySize.height==0)
+		if ((displaySize.width==0 && displaySize.height==0)||CGSizeEqualToSize(displaySize, _placeHolderImageSize))
 		{
 			displaySize = _originalSize;
 		}
@@ -244,6 +259,13 @@ static NSMutableDictionary *_classForTagNameLookup = nil;
 	}
 	
 	_displaySize = displaySize;
+}
+
+
+-(BOOL)originalSizeSetedByPlaceHolderSize
+{
+	return CGSizeEqualToSize(_originalSize, _placeHolderImageSize);
+	
 }
 
 - (void)setDisplaySize:(CGSize)displaySize

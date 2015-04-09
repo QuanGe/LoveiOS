@@ -93,13 +93,15 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
     NSDate *destDate= [dateFormatter dateFromString:dateString];
-    return destDate;
+    [[NSUserDefaults standardUserDefaults] setObject:destDate forKey:@"now"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
+    NSDate *now = [[NSUserDefaults standardUserDefaults] valueForKey:@"now"];
+    return now;
 }
 
 - (NSString *)timestampForDate
 {
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setLocale:[NSLocale currentLocale]];
     [dateFormatter setDoesRelativeDateFormatting:YES];
