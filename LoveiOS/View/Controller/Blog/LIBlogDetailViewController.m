@@ -54,7 +54,7 @@
         const char * data = [x cStringUsingEncoding:NSUTF8StringEncoding];
         sd_markdown_render(ob, (uint8_t*)data, [x lengthOfBytesUsingEncoding:NSUTF8StringEncoding], markdown);
         NSString *obStr = [[NSString alloc] initWithBytes:ob->data length:ob->size encoding:NSUTF8StringEncoding];
-        obStr = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\"><style type=\"text/css\">code, pre {font-family:\"Monaco\",\"Courier New\",monospace;font-size:12px;line-height:1.5;}pre {-moz-border-radius:5px 5px 5px 5px;-webkit-border-radius:5px;border-radius:5px;-moz-box-shadow:0 -1px 0 #444444;background-color:#fafafa;color:#3b3b3b;font-size:13px;margin:15 15 15 15px;padding:0px;white-space:pre-wrap;width:740px;word-wrap:break-word;}</style></head><body><div style=\"line-height: 1.5;font-size:18fpx;color:#000000;margin-left:0px;padding-right:0px\"> %@</div><body></html>",obStr];
+        obStr = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\"><style type=\"text/css\">code, pre {font-family:\"Monaco\",\"Courier New\",monospace;font-size:10px;line-height:1.5;margin:0 15 0 15px; padding:0px 0;}pre {-moz-border-radius:5px 5px 5px 5px;-webkit-border-radius:5px;border-radius:5px;-moz-box-shadow:0 -1px 0 #444444;background-color:#fafafa;color:#3b3b3b;font-size:10px;margin:0 15 0 15px;padding:0px;white-space:pre-wrap;width:740px;word-wrap:break-word;}</style></head><body><div style=\"line-height: 1.5;font-size:18fpx;color:#000000;margin-left:0px;padding-right:0px\"> %@</div><body></html>",obStr];
         [self useHtmlStrSetDtAttributeText:obStr];
         [hud hide:YES];
         

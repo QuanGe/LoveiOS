@@ -1128,6 +1128,27 @@ is_empty(uint8_t *data, size_t size)
 	return i + 1;
 }
 
+/* 去掉github开头部分*/
+static size_t
+deleteGithubHeader(uint8_t *data, size_t size)
+{
+    size_t i = 0;
+    
+    if (size < 12) return 0;
+    
+    i+=3;
+
+    while (i < size) {
+        if(data[i] == '-' && data[i-1] == '\n' && data[i+2] == '-' && data[i+3] == '\n')
+            break;
+        i++;
+    }
+    
+    return i+4;
+
+    
+}
+
 /*判断是否是一条水平分割线 参考markdown维基百科的 水平分割线*/
 /* is_hrule • returns whether a line is a horizontal rule */
 static int
@@ -2238,7 +2259,9 @@ parse_block(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t size
 	if (rndr->work_bufs[BUFFER_SPAN].size +
 		rndr->work_bufs[BUFFER_BLOCK].size > rndr->max_nesting)
 		return;
-
+    {
+        beg = deleteGithubHeader(data, size);
+    }
 	while (beg < size) {
 		txt_data = data + beg;
 		end = size - beg;
