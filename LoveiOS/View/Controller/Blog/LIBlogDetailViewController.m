@@ -128,7 +128,7 @@
         // url for deferred loading
         imageView.url = attachment.contentURL;
         
-        imageView.placeHolderImageName = @"logoOfList";
+        imageView.placeHolderImageName = @"listDefault";
         
         // if there is a hyperlink then add a link button on top of this image
         if (attachment.hyperLinkURL)
@@ -285,7 +285,9 @@
 -(void)useHtmlStrSetDtAttributeText:(NSString*)str {
     
     
-   
+    NSRange  range = [self.blogURLString rangeOfString:@"/master/"];
+    NSString * baseUrl = [self.blogURLString substringToIndex:range.location+range.length];
+    str = [str stringByReplacingOccurrencesOfString:@"<img src=\"/" withString:[@"<img src=\"" stringByAppendingString:baseUrl]];
     
     CGSize maxImageSize = CGSizeMake(self.view.width - 30.0, 3300.0);
     
@@ -308,7 +310,10 @@
         }
     };
     
+    
+    
     NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:1.0], NSTextSizeMultiplierDocumentOption,
+                                    
                                     [NSValue valueWithCGSize:placeholder],DTPlaceHolderImageSize,
                                     [NSValue valueWithCGSize:maxImageSize], DTMaxImageSize,
                                     @"Times New Roman", DTDefaultFontFamily,  @"black", DTDefaultLinkColor, @"red", DTDefaultLinkHighlightColor, callBackBlock, DTWillFlushBlockCallBack, nil];
