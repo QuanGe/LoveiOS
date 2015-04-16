@@ -27,14 +27,36 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    CGRect frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
     self.dtAttributeText.shouldDrawImages = NO;
     self.dtAttributeText.shouldDrawLinks = NO;
     self.dtAttributeText.textDelegate = self; // delegate for custom sub views
     
     // set an inset. Since the bottom is below a toolbar inset by 44px
-    [self.dtAttributeText setScrollIndicatorInsets:UIEdgeInsetsMake(10, 10, 44, 10)];
-    self.dtAttributeText.contentInset = UIEdgeInsetsMake(10 , 10, 10, 10);
-    self.dtAttributeText.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    // set an inset. Since the bottom is below a toolbar inset by 44px
+    [self.dtAttributeText setScrollIndicatorInsets:UIEdgeInsetsMake(0, 0, 44, 0)];
+    self.dtAttributeText.contentInset = UIEdgeInsetsMake(10, 10, 54, 10);
+    self.dtAttributeText.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    // this also compiles with iOS 6 SDK, but will work with later SDKs too
+    CGFloat topInset = [[self valueForKeyPath:@"topLayoutGuide.length"] floatValue];
+    CGFloat bottomInset = [[self valueForKeyPath:@"bottomLayoutGuide.length"] floatValue];
+    
+    NSLog(@"%f top", topInset);
+    
+    UIEdgeInsets outerInsets = UIEdgeInsetsMake(topInset, 0, bottomInset, 0);
+    UIEdgeInsets innerInsets = outerInsets;
+    innerInsets.left += 10;
+    innerInsets.right += 10;
+    innerInsets.top += 10;
+    innerInsets.bottom += 10;
+    
+    CGPoint innerScrollOffset = CGPointMake(-innerInsets.left, -innerInsets.top);
+    CGPoint outerScrollOffset = CGPointMake(-outerInsets.left, -outerInsets.top);
+    
+    self.dtAttributeText.contentInset = innerInsets;
+    self.dtAttributeText.contentOffset = innerScrollOffset;
+    self.dtAttributeText.scrollIndicatorInsets = outerInsets;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"正在加载，请稍后";
@@ -54,7 +76,7 @@
         const char * data = [x cStringUsingEncoding:NSUTF8StringEncoding];
         sd_markdown_render(ob, (uint8_t*)data, [x lengthOfBytesUsingEncoding:NSUTF8StringEncoding], markdown);
         NSString *obStr = [[NSString alloc] initWithBytes:ob->data length:ob->size encoding:NSUTF8StringEncoding];
-        obStr = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\"><style type=\"text/css\">code, pre {font-family:\"Monaco\",\"Courier New\",monospace;font-size:10px;line-height:1.5;margin:0 15 0 15px; padding:0px 0;}pre {-moz-border-radius:5px 5px 5px 5px;-webkit-border-radius:5px;border-radius:5px;-moz-box-shadow:0 -1px 0 #444444;background-color:#fafafa;color:#3b3b3b;font-size:10px;margin:0 15 0 15px;padding:0px;white-space:pre-wrap;width:740px;word-wrap:break-word;}</style></head><body><div style=\"line-height: 1.5;font-size:18fpx;color:#000000;margin-left:0px;padding-right:0px\"> %@</div><body></html>",obStr];
+        obStr = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\"><style type=\"text/css\">code, pre {font-family:\"Monaco\",\"Courier New\",monospace;font-size:10px;line-height:1.5;margin:0 15 0 15px; padding:0px 0;}pre {-moz-border-radius:5px 5px 5px 5px;-webkit-border-radius:5px;border-radius:5px;-moz-box-shadow:0 -1px 0 #444444;background-color:#fafafa;color:#3b3b3b;font-size:10px;margin:0 15 0 15px;padding:0px;white-space:pre-wrap;word-wrap:break-word;}</style></head><body><div style=\"line-height: 1.5;font-size:18fpx;color:#000000;margin-left:0px;padding-right:0px\"> %@</div><body></html>",obStr];
         [self useHtmlStrSetDtAttributeText:obStr];
         [hud hide:YES];
         
@@ -183,22 +205,25 @@
 
 - (BOOL)attributedTextContentView:(DTAttributedTextContentView *)attributedTextContentView shouldDrawBackgroundForTextBlock:(DTTextBlock *)textBlock frame:(CGRect)frame context:(CGContextRef)context forLayoutFrame:(DTCoreTextLayoutFrame *)layoutFrame
 {
-    UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(frame,1,1) cornerRadius:10];
-    
     CGColorRef color = [textBlock.backgroundColor CGColor];
-    if (color)
-    {
-        CGContextSetFillColorWithColor(context, color);
-        CGContextAddPath(context, [roundedRect CGPath]);
-        CGContextFillPath(context);
-        
-        CGContextAddPath(context, [roundedRect CGPath]);
-        CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
-        CGContextStrokePath(context);
-        return NO;
-    }
     
-    return YES; // draw standard background
+    if(!color)
+        return YES;
+    if(![self.dtAttributeText viewWithTag:@(frame.origin.y).integerValue])
+    {
+        attributedTextContentView.backgroundColor = [UIColor clearColor];
+        UIView * u = [[UIView alloc] initWithFrame:frame];
+        u.layer.cornerRadius = 3;
+        u.layer.borderColor = mRGBToColor(0xeeeeee).CGColor;
+        u.layer.borderWidth=1;
+        u.layer.backgroundColor = color;
+        u.tag = @(frame.origin.y).integerValue;
+        
+        [self.dtAttributeText addSubview:u];
+        [self.dtAttributeText sendSubviewToBack:u];
+    }
+    return NO;
+
 }
 
 
