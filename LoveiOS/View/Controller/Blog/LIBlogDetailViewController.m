@@ -27,7 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    CGRect frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+
     self.dtAttributeText.shouldDrawImages = NO;
     self.dtAttributeText.shouldDrawLinks = NO;
     self.dtAttributeText.textDelegate = self; // delegate for custom sub views
@@ -38,25 +38,6 @@
     self.dtAttributeText.contentInset = UIEdgeInsetsMake(10, 10, 54, 10);
     self.dtAttributeText.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    // this also compiles with iOS 6 SDK, but will work with later SDKs too
-    CGFloat topInset = [[self valueForKeyPath:@"topLayoutGuide.length"] floatValue];
-    CGFloat bottomInset = [[self valueForKeyPath:@"bottomLayoutGuide.length"] floatValue];
-    
-    NSLog(@"%f top", topInset);
-    
-    UIEdgeInsets outerInsets = UIEdgeInsetsMake(topInset, 0, bottomInset, 0);
-    UIEdgeInsets innerInsets = outerInsets;
-    innerInsets.left += 10;
-    innerInsets.right += 10;
-    innerInsets.top += 10;
-    innerInsets.bottom += 10;
-    
-    CGPoint innerScrollOffset = CGPointMake(-innerInsets.left, -innerInsets.top);
-    CGPoint outerScrollOffset = CGPointMake(-outerInsets.left, -outerInsets.top);
-    
-    self.dtAttributeText.contentInset = innerInsets;
-    self.dtAttributeText.contentOffset = innerScrollOffset;
-    self.dtAttributeText.scrollIndicatorInsets = outerInsets;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"正在加载，请稍后";
