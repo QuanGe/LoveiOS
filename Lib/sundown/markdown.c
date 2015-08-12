@@ -1136,8 +1136,11 @@ deleteGithubHeader(uint8_t *data, size_t size)
     
     if (size < 12) return 0;
     
+    if(data[0] != '-' && data[1] != '-' && data[2] != '-')
+        return 0;
     i+=3;
-
+    
+    
     while (i < size) {
         if(data[i] == '-' && data[i-1] == '\n' && data[i+2] == '-' && data[i+3] == '\n')
             break;

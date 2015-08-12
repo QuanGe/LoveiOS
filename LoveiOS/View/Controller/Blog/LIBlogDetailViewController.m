@@ -57,7 +57,7 @@
         const char * data = [x cStringUsingEncoding:NSUTF8StringEncoding];
         sd_markdown_render(ob, (uint8_t*)data, [x lengthOfBytesUsingEncoding:NSUTF8StringEncoding], markdown);
         NSString *obStr = [[NSString alloc] initWithBytes:ob->data length:ob->size encoding:NSUTF8StringEncoding];
-        obStr = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\"><style type=\"text/css\">code, pre {font-family:\"Monaco\",\"Courier New\",monospace;font-size:10px;line-height:1.5;margin:0 15 0 15px; padding:0px 0;}pre {-moz-border-radius:5px 5px 5px 5px;-webkit-border-radius:5px;border-radius:5px;-moz-box-shadow:0 -1px 0 #444444;background-color:#fafafa;color:#3b3b3b;font-size:10px;margin:0 15 0 15px;padding:0px;white-space:pre-wrap;word-wrap:break-word;}</style></head><body><div style=\"line-height: 1.5;font-size:18fpx;color:#000000;margin-left:0px;padding-right:0px\"> %@</div><body></html>",obStr];
+        obStr = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\"><style type=\"text/css\">code, pre {font-size:10px;line-height:1.5;margin:0 15 0 15px; }pre {background-color:#fafafa;color:#3b3b3b;font-size:10px;padding:10px;}</style></head><body><div style=\"line-height: 1.5;font-size:18fpx;color:#000000;margin-left:0px;padding-right:0px\"> %@</div><body></html>",obStr];
         [self useHtmlStrSetDtAttributeText:obStr];
         [hud hide:YES];
         
@@ -284,6 +284,12 @@
         // layout might have changed due to image sizes
         [self.dtAttributeText relayoutText];
     }
+    
+    NSArray * a = self.dtAttributeText.subviews;
+    for (id obj in a) {
+        if([obj isMemberOfClass:[UIView class]])
+            [obj removeFromSuperview];
+    }
 }
 
 #pragma mark Properties
@@ -292,8 +298,28 @@
     
     
     NSRange  range = [self.blogURLString rangeOfString:@"/master/"];
+    NSArray * subStrs = [self.blogURLString componentsSeparatedByString:@"/"];
     NSString * baseUrl = [self.blogURLString substringToIndex:range.location+range.length];
     str = [str stringByReplacingOccurrencesOfString:@"<img src=\"/" withString:[@"<img src=\"" stringByAppendingString:baseUrl]];
+    @autoreleasepool {
+        while ([str rangeOfString:@"<img src=\"./"].location != NSNotFound) {
+            NSRange startRange = [str rangeOfString:@"<img src=\"./"];
+            
+            NSRange endRange = [[str substringFromIndex:startRange.location] rangeOfString:@">"];
+            NSString * imageStr = [str substringWithRange:NSMakeRange(startRange.location,endRange.location)];
+            NSArray * subArray = [imageStr componentsSeparatedByString:@"\""];
+            NSString * url = [(NSString*)subArray[1] substringFromIndex:2];
+            url = [[self.blogURLString substringToIndex:self.blogURLString.length-((NSString*)subStrs.lastObject).length] stringByAppendingString:url];
+            url = [url stringByAppendingString:@"\""];
+            str = [str stringByReplacingCharactersInRange:NSMakeRange(startRange.location,endRange.location-1) withString:[@"<img src=\"" stringByAppendingString:url]];
+            
+            
+        }
+        
+    }
+    
+    
+    
     
     CGSize maxImageSize = CGSizeMake(self.view.width - 30.0, 3300.0);
     
