@@ -69,10 +69,10 @@
 //    [self addChildViewController:listController];
     
     
-    [[self.contentView layer] setShadowOffset:CGSizeMake(1, 1)];
-    [[self.contentView layer] setShadowRadius:5];
-    [[self.contentView layer] setShadowOpacity:1];
-    [[self.contentView layer] setShadowColor:[UIColor blackColor].CGColor];
+//    [[self.contentView layer] setShadowOffset:CGSizeMake(1, 1)];
+//    [[self.contentView layer] setShadowRadius:5];
+//    [[self.contentView layer] setShadowOpacity:1];
+//    [[self.contentView layer] setShadowColor:[UIColor blackColor].CGColor];
     
     self.contentBoxView.frame = self.view.frame;
     self.gestureView.hidden = YES;
